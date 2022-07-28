@@ -22,9 +22,23 @@ from pyflink.datastream.connectors.file_system import (FileEnumeratorProvider, F
                                                        BucketAssigner, FileSourceBuilder,
                                                        FileSplitAssignerProvider, OutputFileConfig,
                                                        RollingPolicy,
-                                                       StreamFormat, StreamingFileSink)
+                                                       StreamFormat, StreamingFileSink, BulkFormat)
 from pyflink.datastream.connectors.jdbc import JdbcSink, JdbcConnectionOptions, JdbcExecutionOptions
-from pyflink.datastream.connectors.kafka import FlinkKafkaConsumer, FlinkKafkaProducer, Semantic
+from pyflink.datastream.connectors.kafka import (
+    FlinkKafkaConsumer,
+    FlinkKafkaProducer,
+    Semantic,
+    KafkaSource,
+    KafkaSourceBuilder,
+    KafkaTopicPartition,
+    KafkaOffsetsInitializer,
+    KafkaOffsetResetStrategy,
+    KafkaSink,
+    KafkaSinkBuilder,
+    KafkaRecordSerializationSchema,
+    KafkaRecordSerializationSchemaBuilder,
+    KafkaTopicSelector,
+)
 from pyflink.datastream.connectors.number_seq import NumberSequenceSource
 from pyflink.datastream.connectors.pulsar import PulsarDeserializationSchema, PulsarSource, \
     PulsarSourceBuilder, SubscriptionType, StartCursor, StopCursor, PulsarSerializationSchema, \
@@ -32,6 +46,7 @@ from pyflink.datastream.connectors.pulsar import PulsarDeserializationSchema, Pu
 from pyflink.datastream.connectors.rabbitmq import RMQConnectionConfig, RMQSource, RMQSink
 from pyflink.datastream.connectors.kinesis import (FlinkKinesisConsumer, KinesisStreamsSink,
                                                    KinesisFirehoseSink)
+from pyflink.datastream.connectors.cassandra import CassandraSink
 
 
 __all__ = [
@@ -47,6 +62,16 @@ __all__ = [
     'FlinkKafkaConsumer',
     'FlinkKafkaProducer',
     'Semantic',
+    'KafkaSource',
+    'KafkaSourceBuilder',
+    'KafkaTopicPartition',
+    'KafkaOffsetsInitializer',
+    'KafkaOffsetResetStrategy',
+    'KafkaSink',
+    'KafkaSinkBuilder',
+    'KafkaRecordSerializationSchema',
+    'KafkaRecordSerializationSchemaBuilder',
+    'KafkaTopicSelector',
     'JdbcSink',
     'JdbcConnectionOptions',
     'JdbcExecutionOptions',
@@ -67,11 +92,13 @@ __all__ = [
     'RollingPolicy',
     'StartCursor',
     'StopCursor',
+    'BulkFormat',
     'StreamFormat',
     'StreamingFileSink',
     'FlinkKinesisConsumer',
     'KinesisStreamsSink',
     'KinesisFirehoseSink',
     'Elasticsearch6SinkBuilder',
-    'Elasticsearch7SinkBuilder'
+    'Elasticsearch7SinkBuilder',
+    'CassandraSink'
 ]

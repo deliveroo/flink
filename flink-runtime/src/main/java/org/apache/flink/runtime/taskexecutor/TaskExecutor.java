@@ -691,7 +691,9 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
                             jobId,
                             tdd.getAllocationId(),
                             taskInformation.getJobVertexId(),
-                            tdd.getSubtaskIndex());
+                            tdd.getSubtaskIndex(),
+                            taskManagerConfiguration.getConfiguration(),
+                            jobInformation.getJobConfiguration());
 
             // TODO: Pass config value from user program and do overriding here.
             final StateChangelogStorage<?> changelogStorage;
@@ -1350,7 +1352,8 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
                         hardwareDescription,
                         memoryConfiguration,
                         taskManagerConfiguration.getDefaultSlotResourceProfile(),
-                        taskManagerConfiguration.getTotalResourceProfile());
+                        taskManagerConfiguration.getTotalResourceProfile(),
+                        unresolvedTaskManagerLocation.getNodeId());
 
         resourceManagerConnection =
                 new TaskExecutorToResourceManagerConnection(
